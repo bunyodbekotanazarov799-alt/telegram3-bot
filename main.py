@@ -2,8 +2,11 @@ import asyncio
 from aiogram import Bot, Dispatcher, types, F
 from aiogram.filters import Command
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, Message, InlineKeyboardButton, InlineKeyboardMarkup, InlineQuery
+import os
+from dotenv import load_dotenv
 
-API_TOKEN = "8779937766:AAHE5LPk10Oei3Cyg01Z9r0xdgmu6l-ejro"
+load_dotenv()
+API_TOKEN = os.getenv("API_TOKEN")
 
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher()
@@ -598,6 +601,6 @@ async def man(message: Message):
 
 async def main():
     await dp.start_polling(bot)
-
+    
 if __name__ == "__main__":
-    asyncio.run(main())
+    executor.start_polling(dp, skip_updates=True)
